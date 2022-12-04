@@ -1,31 +1,10 @@
-#print('hola mundo')
-#name = input('cual es tu nombre? ')
-#print('aah ok es', name)
 import flet as ft
 
-def main(page: ft.Page):
-    page.title = "Flet counter example"
-    page.vertical_alignment = ft.MainAxisAlignment.CENTER
-
-    txt_number = ft.TextField(value="0", text_align=ft.TextAlign.RIGHT, width=100)
-
-    def minus_click(e):
-        txt_number.value = str(int(txt_number.value) - 1)
-        page.update()
-
-    def plus_click(e):
-        txt_number.value = str(int(txt_number.value) + 1)
-        page.update()
-
-    page.add(
-        ft.Row(
-            [
-                ft.IconButton(ft.icons.REMOVE, on_click=minus_click),
-                txt_number,
-                ft.IconButton(ft.icons.ADD, on_click=plus_click),
-            ],
-            alignment=ft.MainAxisAlignment.CENTER,
-        )
-    )
-
+def main(page):
+    def button_clicked(e):
+        f = open ('./data/data.txt', 'r')
+        temp = f.read()
+        page.add(ft.Text(temp))
+    page.add(ft.ElevatedButton(text="Temperature", on_click=button_clicked))
+    
 ft.app(target=main)

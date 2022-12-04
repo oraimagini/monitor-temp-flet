@@ -1,3 +1,4 @@
+# read data 
 f = open ('./data/data.txt', 'r')
 mensaje = f.read()
 print(mensaje)
